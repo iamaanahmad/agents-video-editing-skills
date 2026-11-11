@@ -1,0 +1,69 @@
+{
+  "claude": {
+    "label": "Claude Code",
+    "projectSkills": ".claude/skills",
+    "userSkills": "~/.claude/skills",
+    "ruleFiles": ["CLAUDE.md"]
+  },
+  "codex": {
+    "label": "OpenAI Codex",
+    "projectSkills": ".agents/skills",
+    "userSkills": "~/.agents/skills",
+    "ruleFiles": ["AGENTS.md"]
+  },
+  "kiro": {
+    "label": "Kiro",
+    "projectSkills": ".kiro/skills",
+    "userSkills": "~/.kiro/skills",
+    "ruleFiles": [".kiro/steering/video-editing-skills.md"]
+  },
+  "copilot": {
+    "label": "GitHub Copilot",
+    "projectSkills": ".github/skills",
+    "userSkills": "~/.copilot/skills",
+    "ruleFiles": [".github/copilot-instructions.md"]
+  },
+  "antigravity": {
+    "label": "Google Antigravity",
+    "projectSkills": ".agents/skills",
+    "userSkills": "~/.gemini/config/skills",
+    "ruleFiles": ["AGENTS.md", "GEMINI.md"]
+  },
+  "windsurf": {
+    "label": "Windsurf",
+    "projectSkills": ".windsurf/skills",
+    "userSkills": "~/.codeium/windsurf/skills",
+    "ruleFiles": [".windsurf/rules/video-editing-skills.md"]
+  },
+  "cursor": {
+    "label": "Cursor",
+    "projectSkills": ".cursor/skills",
+    "userSkills": "~/.cursor/skills",
+    "ruleFiles": ["AGENTS.md"]
+  },
+  "gemini": {
+    "label": "Gemini CLI",
+    "projectSkills": ".gemini/skills",
+    "userSkills": "~/.gemini/skills",
+    "ruleFiles": ["GEMINI.md"]
+  },
+  "cline": {
+    "label": "Cline",
+    "projectSkills": ".cline/skills",
+    "userSkills": "~/.cline/skills",
+    "ruleFiles": ["AGENTS.md"]
+  },
+  "opencode": {
+    "label": "OpenCode",
+    "projectSkills": ".opencode/skills",
+    "userSkills": "~/.config/opencode/skills",
+    "ruleFiles": ["AGENTS.md"]
+  },
+  "zed": {
+    "label": "Zed",
+    "projectSkills": ".agents/skills",
+    "userSkills": null,
+    "ruleFiles": ["AGENTS.md"],
+    "note": "Zed reads AGENTS.md rules, not skill folders; the block points the agent at .agents/skills."
+  }
+}

@@ -20,7 +20,27 @@ Each skill is an open-standard `SKILL.md` folder. One installer puts them where 
 
 ## Quick start
 
-Requires Python 3.9+ (standard library only). Skills themselves use FFmpeg, and some use Node.js or Python packages. Each skill says which.
+### With npx (no clone, no Python)
+
+Needs Node.js 18.3 or newer.
+
+```bash
+# Install into the current project, for the agents you use
+npx agents-video-editing-skills --agent claude,kiro,codex --rules
+
+# Preview first
+npx agents-video-editing-skills --agent all --rules --dry-run
+
+# Install for every project on your machine
+npx agents-video-editing-skills --agent claude,kiro --scope user
+
+# List skills and agent targets
+npx agents-video-editing-skills list
+```
+
+### From a clone (Python 3.9+, standard library only)
+
+Both installers read the same `agents.json` and write identical files. Skills themselves use FFmpeg, and some use Node.js or Python packages. Each skill says which.
 
 ```bash
 git clone https://github.com/iamaanahmad/agents-video-editing-skills

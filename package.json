@@ -1,0 +1,52 @@
+{
+  "name": "agents-video-editing-skills",
+  "version": "0.1.0",
+  "description": "Video editing skills for AI coding agents: Claude Code, Codex, Kiro, Copilot, Antigravity, Windsurf, Cursor, Zed. FFmpeg, Remotion, moviepy, captions, voiceover, export.",
+  "keywords": [
+    "agent-skills",
+    "skill-md",
+    "video-editing",
+    "ai-video-editing",
+    "remotion",
+    "remotion-skills",
+    "claude-code",
+    "claude-skills",
+    "codex",
+    "kiro",
+    "github-copilot",
+    "windsurf",
+    "antigravity",
+    "cursor",
+    "ffmpeg",
+    "ai-agents"
+  ],
+  "homepage": "https://github.com/iamaanahmad/agents-video-editing-skills#readme",
+  "bugs": {
+    "url": "https://github.com/iamaanahmad/agents-video-editing-skills/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamaanahmad/agents-video-editing-skills.git"
+  },
+  "license": "MIT",
+  "author": "Amaan Ahmad",
+  "type": "module",
+  "bin": {
+    "agents-video-editing-skills": "bin/cli.mjs",
+    "video-editing-skills": "bin/cli.mjs"
+  },
+  "files": [
+    "bin/",
+    "skills/",
+    "agents.json",
+    "README.md",
+    "LICENSE",
+    "NOTICE.md"
+  ],
+  "engines": {
+    "node": ">=18.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

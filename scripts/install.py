@@ -19,13 +19,14 @@ Only the standard library is used.
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import shutil
 import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-from skills_lib import Skill, load_skills
+from skills_lib import REPO_ROOT, Skill, load_skills
 
 BEGIN = "<!-- BEGIN agents-video-editing-skills (managed) -->"
 END = "<!-- END agents-video-editing-skills (managed) -->"
@@ -42,22 +43,21 @@ class Agent:
     note: str = ""
 
 
+def load_agents() -> dict[str, Agent]:
+    """Agent targets live in agents.json, shared with the npm CLI (bin/cli.mjs)."""
+    data = json.loads((REPO_ROOT / "agents.json").read_text(encoding="utf-8"))
+    agents: dict[str, Agent] = {}
+    for key, a in data.items():
+        user = a.get("userSkills")
+        user_path = HOME / user[2:] if user else None  # entries start with "~/"
+        agents[key] = Agent(key, a["label"], a["projectSkills"], user_path,
+                            tuple(a["ruleFiles"]), a.get("note", ""))
+    return agents
+
+
 # Skills locations follow each tool's documented convention. Tools change; run --list
 # to see what will be written, and use --dry-run before the first install.
-AGENTS: dict[str, Agent] = {
-    "claude": Agent("claude", "Claude Code", ".claude/skills", HOME / ".claude/skills", ("CLAUDE.md",)),
-    "codex": Agent("codex", "OpenAI Codex", ".agents/skills", HOME / ".agents/skills", ("AGENTS.md",)),
-    "kiro": Agent("kiro", "Kiro", ".kiro/skills", HOME / ".kiro/skills", (".kiro/steering/video-editing-skills.md",)),
-    "copilot": Agent("copilot", "GitHub Copilot", ".github/skills", HOME / ".copilot/skills", (".github/copilot-instructions.md",)),
-    "antigravity": Agent("antigravity", "Google Antigravity", ".agents/skills", HOME / ".gemini/config/skills", ("AGENTS.md", "GEMINI.md")),
-    "windsurf": Agent("windsurf", "Windsurf", ".windsurf/skills", HOME / ".codeium/windsurf/skills", (".windsurf/rules/video-editing-skills.md",)),
-    "cursor": Agent("cursor", "Cursor", ".cursor/skills", HOME / ".cursor/skills", ("AGENTS.md",)),
-    "gemini": Agent("gemini", "Gemini CLI", ".gemini/skills", HOME / ".gemini/skills", ("GEMINI.md",)),
-    "cline": Agent("cline", "Cline", ".cline/skills", HOME / ".cline/skills", ("AGENTS.md",)),
-    "opencode": Agent("opencode", "OpenCode", ".opencode/skills", HOME / ".config/opencode/skills", ("AGENTS.md",)),
-    "zed": Agent("zed", "Zed", ".agents/skills", None, ("AGENTS.md",),
-                 "Zed reads AGENTS.md rules, not skill folders; the block points the agent at .agents/skills."),
-}
+AGENTS: dict[str, Agent] = load_agents()
 
 
 def md_block(skills: list[Skill], skills_rel: str) -> str:
