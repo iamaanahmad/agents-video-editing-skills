@@ -1,0 +1,28 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  skills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate skills
+        run: python scripts/validate.py
+      - name: Dry-run installer for all agents
+        run: python scripts/install.py --agent all --rules --project "$RUNNER_TEMP" --dry-run
+      - name: Smoke test bundled scripts
+        run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg
+          ffmpeg -hide_banner -loglevel error -f lavfi -i testsrc=duration=2:size=1280x720:rate=30 -f lavfi -i sine=duration=2 -pix_fmt yuv420p -c:a aac "$RUNNER_TEMP/t.mp4"
+          python skills/platform-export/scripts/export_platforms.py "$RUNNER_TEMP/t.mp4" --targets web,vertical --out "$RUNNER_TEMP/out"
+          python skills/video-qa/scripts/probe.py "$RUNNER_TEMP/out/t-vertical.mp4" --expect-width 1080 --expect-height 1920
