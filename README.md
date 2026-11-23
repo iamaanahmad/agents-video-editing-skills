@@ -185,6 +185,16 @@ See [docs/compatibility.md](docs/compatibility.md) and [CONTRIBUTING.md](CONTRIB
 - [claude-code-video-toolkit](https://github.com/digitalsamba/claude-code-video-toolkit): the Claude Code video toolkit that inspired this project.
 - [Agent Skills specification](https://agentskills.io): the open format these skills follow.
 
+## Star History
+
+<a href="https://www.star-history.com/?repos=iamaanahmad%2Fagents-video-editing-skills&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=iamaanahmad/agents-video-editing-skills&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=iamaanahmad/agents-video-editing-skills&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=iamaanahmad/agents-video-editing-skills&type=date&legend=top-left" />
+ </picture>
+</a>
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Run `python scripts/validate.py` before opening a pull request. Stars and issues help others find the project.
